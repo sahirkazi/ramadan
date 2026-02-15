@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>तस्बीह काउंटर | रमज़ान 2026</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>तस्बीह काउंटर | रमज़ान 2026</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<header class="glass">
-  <div class="header-row">
-    <div style="display:flex;align-items:center;gap:8px;">
-      <span>🌙</span>
-      <h1 class="text-gradient" style="font-size:1rem;font-weight:800;">रमज़ान 2026</h1>
+  <header class="glass">
+    <div class="header-row">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span>🌙</span>
+        <h1 class="text-gradient" style="font-size:1rem;font-weight:800;">रमज़ान 2026</h1>
+      </div>
+      <div class="share-actions">
+        <button class="share-btn wa" onclick="shareOnWhatsApp()">📲 WhatsApp</button>
+        <button class="share-btn" onclick="shareNative()">🔗 शेयर</button>
+      </div>
     </div>
-    <div class="share-actions">
-      <button class="share-btn wa" onclick="shareOnWhatsApp()">📲 WhatsApp</button>
-      <button class="share-btn" onclick="shareNative()">🔗 शेयर</button>
+  </header>
+
+  <main>
+    <h3 class="section-title text-gradient">तस्बीह काउंटर</h3>
+    <div class="tasbih-wrap glass-hero">
+      <div id="tasbih-count" class="tasbih-count">0</div>
+      <button class="tasbih-btn" id="tasbih-btn">+1</button><br>
+      <button class="reset-btn" id="tasbih-reset">↺ रीसेट करें</button>
     </div>
-  </div>
-</header>
+  </main>
 
-<main>
-  <h3 class="section-title text-gradient">तस्बीह काउंटर</h3>
-  <div class="tasbih-wrap glass-hero">
-    <div id="tasbih-count" class="tasbih-count">0</div>
-    <button class="tasbih-btn" id="tasbih-btn">+1</button><br>
-    <button class="reset-btn" id="tasbih-reset">↺ रीसेट करें</button>
-  </div>
-</main>
+  <footer>रमज़ान मुबारक 🌙</footer>
 
-<footer>रमज़ान मुबारक 🌙</footer>
+  <nav class="bottom-nav glass">
+    <div class="inner">
+      <a href="./" class="nav-link"><span class="nav-icon">🏠</span><span>टाइम टेबल</span></a>
+      <a href="dua" class="nav-link"><span class="nav-icon">📖</span><span>दुआ</span></a>
+      <a href="surah" class="nav-link"><span class="nav-icon">📕</span><span>सूरह</span></a>
+      <a href="tasbih" class="nav-link active"><span class="nav-icon">#</span><span>तस्बीह</span></a>
+      <a href="about" class="nav-link"><span class="nav-icon">ℹ️</span><span>हमारे बारे में</span></a>
+    </div>
+  </nav>
 
-<nav class="bottom-nav glass">
-  <div class="inner">
-    <a href="index.html" class="nav-link"><span class="nav-icon">🏠</span><span>टाइम टेबल</span></a>
-    <a href="dua.html" class="nav-link"><span class="nav-icon">📖</span><span>दुआ</span></a>
-    <a href="surah.html" class="nav-link"><span class="nav-icon">📕</span><span>सूरह</span></a>
-    <a href="tasbih.html" class="nav-link active"><span class="nav-icon">#</span><span>तस्बीह</span></a>
-    <a href="about.html" class="nav-link"><span class="nav-icon">ℹ️</span><span>हमारे बारे में</span></a>
-  </div>
-</nav>
+  <script src="data.js"></script>
+  <script>
+    let tasbihCount = Number(localStorage.getItem("tasbih-count") || 0);
+    const countEl = document.getElementById("tasbih-count");
+    countEl.textContent = tasbihCount;
 
-<script src="data.js"></script>
-<script>
-let tasbihCount = Number(localStorage.getItem("tasbih-count") || 0);
-const countEl = document.getElementById("tasbih-count");
-countEl.textContent = tasbihCount;
+    document.getElementById("tasbih-btn").addEventListener("click", () => {
+      tasbihCount++;
+      countEl.textContent = tasbihCount;
+      countEl.classList.add("pulse");
+      setTimeout(() => countEl.classList.remove("pulse"), 200);
+      localStorage.setItem("tasbih-count", tasbihCount);
+    });
 
-document.getElementById("tasbih-btn").addEventListener("click", () => {
-  tasbihCount++;
-  countEl.textContent = tasbihCount;
-  countEl.classList.add("pulse");
-  setTimeout(() => countEl.classList.remove("pulse"), 200);
-  localStorage.setItem("tasbih-count", tasbihCount);
-});
-
-document.getElementById("tasbih-reset").addEventListener("click", () => {
-  tasbihCount = 0;
-  countEl.textContent = 0;
-  localStorage.setItem("tasbih-count", 0);
-});
-</script>
+    document.getElementById("tasbih-reset").addEventListener("click", () => {
+      tasbihCount = 0;
+      countEl.textContent = 0;
+      localStorage.setItem("tasbih-count", 0);
+    });
+  </script>
 </body>
+
 </html>

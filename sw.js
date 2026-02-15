@@ -1,10 +1,10 @@
-const CACHE_NAME = "ramadan-v3";
+const CACHE_NAME = "ramadan-v4";
 const ASSETS = [
-  "index.html",
-  "dua.html",
-  "surah.html",
-  "tasbih.html",
-  "about.html",
+  "./",
+  "dua",
+  "surah",
+  "tasbih",
+  "about",
   "style.css",
   "data.js",
   "manifest.json",
