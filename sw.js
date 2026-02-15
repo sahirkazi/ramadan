@@ -1,4 +1,4 @@
-const CACHE_NAME = "ramadan-v2";
+const CACHE_NAME = "ramadan-v3";
 const ASSETS = [
   "index.html",
   "dua.html",
