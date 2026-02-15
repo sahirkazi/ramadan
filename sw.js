@@ -1,16 +1,16 @@
 const CACHE_NAME = "ramadan-v2";
 const ASSETS = [
-  "/plain/index.html",
-  "/plain/dua.html",
-  "/plain/surah.html",
-  "/plain/tasbih.html",
-  "/plain/about.html",
-  "/plain/style.css",
-  "/plain/data.js",
-  "/plain/manifest.json",
-  "/plain/favicon.png",
-  "/plain/pwa-192x192.png",
-  "/plain/pwa-512x512.png"
+  "index.html",
+  "dua.html",
+  "surah.html",
+  "tasbih.html",
+  "about.html",
+  "style.css",
+  "data.js",
+  "manifest.json",
+  "favicon.png",
+  "pwa-192x192.png",
+  "pwa-512x512.png"
 ];
 
 self.addEventListener("install", (e) => {
