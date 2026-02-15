@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>रमज़ान टाइम टेबल 2026 | सहरी और इफ़्तार</title>
 <meta name="description" content="रमज़ान 2026 / 1447 हिजरी का पूरा 30 दिन का टाइम टेबल — सहरी और इफ़्तार के समय के साथ लाइव काउंटडाउन" />
+<meta name="theme-color" content="#0F5132" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="रमज़ान 2026" />
+<link rel="apple-touch-icon" href="/plain/pwa-192x192.png" />
+<link rel="icon" type="image/png" href="/plain/favicon.png" />
+<link rel="manifest" href="manifest.json" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -24,7 +31,7 @@
 
 <main>
   <div id="hero-card"></div>
-  <h3 class="section-title text-gradient">30 दिन का टाइम टेबल</h3>
+  <h3 class="section-title text-gradient">ये टाइम टेबल मिरज शहर के लिए है</h3>
   <div class="table-wrap glass">
     <table>
       <thead><tr><th>उर्दू</th><th>अंग्रेजी</th><th>दिन</th><th>सहरी</th><th>इफ़्तार</th></tr></thead>
@@ -166,6 +173,11 @@ renderTable();
 renderHero();
 tickCountdown();
 setInterval(tickCountdown, 1000);
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/plain/sw.js");
+}
 </script>
 </body>
 </html>

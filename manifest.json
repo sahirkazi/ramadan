@@ -1,0 +1,28 @@
+{
+  "name": "रमज़ान टाइम टेबल 2026",
+  "short_name": "रमज़ान 2026",
+  "description": "रमज़ान 2026 / 1447 हिजरी — सहरी और इफ़्तार का टाइम टेबल",
+  "start_url": "/plain/index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0F5132",
+  "background_color": "#071a10",
+  "icons": [
+    {
+      "src": "/plain/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/plain/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/plain/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
