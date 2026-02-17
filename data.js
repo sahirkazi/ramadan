@@ -87,25 +87,24 @@ let deferredPrompt;
 // Check if it's iOS
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
+// Check if running in standalone mode (already installed)
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+if (isStandalone) {
+  // Hide install button immediately if app is already running
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.install-btn').forEach(btn => btn.style.display = 'none');
+  });
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
   // Prevent the mini-infobar from appearing on mobile
   e.preventDefault();
   // Stash the event so it can be triggered later.
   deferredPrompt = e;
-  // Update UI notify the user they can install the PWA
-  const installBtns = document.querySelectorAll('.install-btn');
-  installBtns.forEach(btn => {
-    btn.style.display = 'inline-flex';
-  });
 });
 
-// For browsers that don't support beforeinstallprompt but are PWA-ready (like iOS)
-window.addEventListener('load', () => {
-  if (isIOS) {
-    const installBtns = document.querySelectorAll('.install-btn');
-    installBtns.forEach(btn => btn.style.display = 'inline-flex');
-  }
-});
+// No need for separate load listener for iOS or display logic as it's now visible by default in CSS
 
 async function installPWA() {
   if (isIOS) {
