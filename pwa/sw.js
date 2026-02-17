@@ -1,11 +1,11 @@
-const CACHE_NAME = "ramadan-v4";
+const CACHE_NAME = "ramadan-v5";
 const ASSETS = [
   "../",
   "../dua",
   "../surah",
   "../tasbih",
   "../about",
-  "../style.css",
+  "../style.css?v=1",
   "../data.js",
   "./manifest.json",
   "./favicon.png",
@@ -28,7 +28,22 @@ self.addEventListener("activate", (e) => {
 });
 
 self.addEventListener("fetch", (e) => {
-  e.respondWith(
-    caches.match(e.request).then((cached) => cached || fetch(e.request))
-  );
+  // Stale-while-revalidate strategy for HTML pages ensuring fresh content
+  if (e.request.destination === 'document') {
+    e.respondWith(
+      fetch(e.request).then((networkResponse) => {
+        return caches.open(CACHE_NAME).then((cache) => {
+          cache.put(e.request, networkResponse.clone());
+          return networkResponse;
+        });
+      }).catch(() => {
+        return caches.match(e.request);
+      })
+    );
+  } else {
+    // Cache-first for other assets
+    e.respondWith(
+      caches.match(e.request).then((cached) => cached || fetch(e.request))
+    );
+  }
 });
