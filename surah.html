@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hi">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>???? | ?????? 2026</title>
+  <title>सूरह | रमज़ान 2026</title>
   <meta name="theme-color" content="#0F5132" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="????" />
+  <meta name="apple-mobile-web-app-title" content="सूरह" />
   <link rel="apple-touch-icon" href="pwa/pwa-192x192.png" />
   <link rel="icon" type="image/png" href="pwa/favicon.png" />
   <link rel="manifest" href="pwa/manifest.json" />
@@ -88,35 +88,35 @@
   <header class="glass">
     <div class="header-row">
       <div style="display:flex;align-items:center;gap:8px;">
-        <span>??</span>
-        <h1 class="text-gradient" style="font-size:1rem;font-weight:800;">?????? 2026</h1>
+        <span>🌙</span>
+        <h1 class="text-gradient" style="font-size:1rem;font-weight:800;">रमज़ान 2026</h1>
       </div>
       <div class="share-actions">
         <button class="share-btn install install-btn" onclick="installPWA()">📥 Install</button>
-        <button class="share-btn wa" onclick="shareOnWhatsApp()">?? WhatsApp</button>
-        <button class="share-btn" onclick="shareNative()">?? ????</button>
+        <button class="share-btn wa" onclick="shareOnWhatsApp()">📲 WhatsApp</button>
+        <button class="share-btn" onclick="shareNative()">🔗 शेयर</button>
       </div>
     </div>
   </header>
 
   <main>
     <div class="toggle-row">
-      <h3 class="section-title text-gradient" style="margin-bottom:0;">????</h3>
+      <h3 class="section-title text-gradient" style="margin-bottom:0;">सूरह</h3>
       <button class="lang-btn" id="langToggle" onclick="toggleLang()">Hinglish</button>
     </div>
 
     <div id="surahContainer"></div>
   </main>
 
-  <footer>?????? ?????? ??</footer>
+  <footer>रमज़ान मुबारक 🌙</footer>
 
   <nav class="bottom-nav glass">
     <div class="inner">
-      <a href="./" class="nav-link"><span class="nav-icon">??</span><span>???? ????</span></a>
-      <a href="dua" class="nav-link"><span class="nav-icon">??</span><span>???</span></a>
-      <a href="surah" class="nav-link active"><span class="nav-icon">??</span><span>????</span></a>
-      <a href="tasbih" class="nav-link"><span class="nav-icon">#</span><span>??????</span></a>
-      <a href="about" class="nav-link"><span class="nav-icon">??</span><span>????? ???? ???</span></a>
+      <a href="./" class="nav-link"><span class="nav-icon">🏠</span><span>टाइम टेबल</span></a>
+      <a href="dua" class="nav-link"><span class="nav-icon">📖</span><span>दुआ</span></a>
+      <a href="surah" class="nav-link active"><span class="nav-icon">📕</span><span>सूरह</span></a>
+      <a href="tasbih" class="nav-link"><span class="nav-icon">#</span><span>तस्बीह</span></a>
+      <a href="about" class="nav-link"><span class="nav-icon">ℹ️</span><span>हमारे बारे में</span></a>
     </div>
   </nav>
 
@@ -124,37 +124,37 @@
   <script>
     const surahs = [
       {
-        titleHindi: "???? ??-???????", titleHinglish: "Surah Al-Fatiha",
+        titleHindi: "सूरह अल-फ़ातिहा", titleHinglish: "Surah Al-Fatiha",
         bismillah: null,
-        hindi: ["???????? ???????? ?????? ?????", "?????????? ????", "?????? ?????? ???", "?????? ?????? ? ?????? ??????", "???????? ?????? ?????????", "??????????? ? ?? ??-? ??????", "?????? ??????? ?????? ???-???????"],
+        hindi: ["अल्हम्दु लिल्लाहि रब्बिल आलमीन", "अर्रहमानिर रहीम", "मालिकि यौमिद् दीन", "इय्याक नअबुदु व इय्याक नस्तईन", "इह्दिनस् सिरातल मुस्तक़ीम", "सिरातल्लज़ी न अन अम-त अलैहिम", "ग़ैरिल मग़दूबि अलैहिम वलद-दाल्लीन"],
         hinglish: ["Alhamdulillahi Rabbil 'Aalameen", "Ar-Rahmanir-Raheem", "Maliki Yawmid-Deen", "Iyyaka Na'budu Wa Iyyaka Nasta'een", "Ihdinas-Siraatal-Mustaqeem", "Siraatallazeena An'amta 'Alaihim", "Ghairil-Maghdoobi 'Alaihim Walad-Daalleen"],
         ameen: true
       },
       {
-        titleHindi: "???? ??-????????", titleHinglish: "Surah Al-Kafirun",
-        bismillah: { hindi: "????????????? ??????? ????", hinglish: "Bismillahir Rahmanir Raheem" },
-        hindi: ["??? ?? ??????? ????????", "?? ????? ?? ???????", "? ?? ?????? ?????-? ?? ????", "? ?? ??? ?????? ?? ???????", "? ?? ?????? ?????-? ?? ????", "???? ????-??? ???? ???"],
+        titleHindi: "सूरह अल-काफ़िरून", titleHinglish: "Surah Al-Kafirun",
+        bismillah: { hindi: "बिस्मिल्लाहिर रहमानिर रहीम", hinglish: "Bismillahir Rahmanir Raheem" },
+        hindi: ["कुल या अय्युहल काफ़िरून", "ला अबुदु मा तअबुदून", "व ला अन्तुम आबिदू-न मा अबुद", "व ला अना आबिदुम मा अबत्तूम", "व ला अन्तुम आबिदू-न मा अबुद", "लकुम दीनु-कुम वलिय दीन"],
         hinglish: ["Qul Ya Ayyuhal Kafiroon", "La A'budu Ma Ta'budoon", "Wa La Antum 'Abidoona Ma A'bud", "Wa La Ana 'Abidum Ma 'Abattum", "Wa La Antum 'Abidoona Ma A'bud", "Lakum Deenukum Waliya Deen"],
         ameen: false
       },
       {
-        titleHindi: "???? ??-??????", titleHinglish: "Surah Al-Ikhlas",
-        bismillah: { hindi: "????????????? ??????? ????", hinglish: "Bismillahir Rahmanir Raheem" },
-        hindi: ["??? ????????? ???", "???????? ???", "?? ???? ? ?? ????", "? ?? ???????? ??????? ???"],
+        titleHindi: "सूरह अल-इख़लास", titleHinglish: "Surah Al-Ikhlas",
+        bismillah: { hindi: "बिस्मिल्लाहिर रहमानिर रहीम", hinglish: "Bismillahir Rahmanir Raheem" },
+        hindi: ["कुल हुवल्लाहु अहद", "अल्लाहुस समद", "लम यलिद व लम यूलद", "व लम यकुल्लहू कुफ़ुवन अहद"],
         hinglish: ["Qul Huwallahu Ahad", "Allahus Samad", "Lam Yalid Wa Lam Yoolad", "Wa Lam Yakullahu Kufuwan Ahad"],
         ameen: false
       },
       {
-        titleHindi: "???? ??-?????", titleHinglish: "Surah Al-Falaq",
-        bismillah: { hindi: "????????????? ??????? ????", hinglish: "Bismillahir Rahmanir Raheem" },
-        hindi: ["??? ????? ???????? ?????", "??? ????? ?? ?????", "? ??? ????? ????????? ???? ????", "? ??? ?????? ??????????? ???? ????", "? ??? ????? ??????? ???? ???"],
+        titleHindi: "सूरह अल-फ़लक़", titleHinglish: "Surah Al-Falaq",
+        bismillah: { hindi: "बिस्मिल्लाहिर रहमानिर रहीम", hinglish: "Bismillahir Rahmanir Raheem" },
+        hindi: ["कुल अऊज़ु बिरब्बिल फ़लक़", "मिन शर्रि मा ख़लक़", "व मिन शर्रि ग़ासिक़िन इज़ा वक़ब", "व मिन शर्रिन नफ़्फ़ासाति फ़िल उक़द", "व मिन शर्रि हासिदिन इज़ा हसद"],
         hinglish: ["Qul A'uzu Birabbil Falaq", "Min Sharri Ma Khalaq", "Wa Min Sharri Ghasiqin Iza Waqab", "Wa Min Sharrin Naffathati Fil Uqad", "Wa Min Sharri Hasidin Iza Hasad"],
         ameen: false
       },
       {
-        titleHindi: "???? ??-???", titleHinglish: "Surah An-Nas",
-        bismillah: { hindi: "????????????? ??????? ????", hinglish: "Bismillahir Rahmanir Raheem" },
-        hindi: ["??? ????? ???????? ???", "?????? ???", "?????? ???", "??? ?????? ???-??? ??????", "??????? ????????? ??? ??????? ???", "???? ??????? ?? ???"],
+        titleHindi: "सूरह अन-नास", titleHinglish: "Surah An-Nas",
+        bismillah: { hindi: "बिस्मिल्लाहिर रहमानिर रहीम", hinglish: "Bismillahir Rahmanir Raheem" },
+        hindi: ["कुल अऊज़ु बिरब्बिन नास", "मलिकिन नास", "इलाहिन नास", "मिन शर्रिल वसव-सिल खन्नास", "अल्लज़ी युवस्विसु फ़ी सुदूरिन नास", "मिनल जिन्नति वन नास"],
         hinglish: ["Qul A'uzu Birabbin Naas", "Malikin Naas", "Ilahin Naas", "Min Sharril Waswasil Khannaas", "Allazee Yuwaswisu Fee Sudoorin Naas", "Minal Jinnati Wan Naas"],
         ameen: false
       }
@@ -164,7 +164,7 @@
 
     function toggleLang() {
       isHinglish = !isHinglish;
-      document.getElementById("langToggle").textContent = isHinglish ? "?????" : "Hinglish";
+      document.getElementById("langToggle").textContent = isHinglish ? "हिंदी" : "Hinglish";
       renderSurahs();
     }
 
@@ -175,12 +175,12 @@
         const title = isHinglish ? s.titleHinglish : s.titleHindi;
         const bism = s.bismillah ? (isHinglish ? s.bismillah.hinglish : s.bismillah.hindi) : "";
         let html = '<div class="surah-card glass">';
-        html += '<div class="surah-title">?? ' + title + '</div>';
+        html += '<div class="surah-title">📕 ' + title + '</div>';
         if (bism) html += '<div class="surah-bismillah">' + bism + '</div>';
         html += '<div class="surah-lines">';
         lines.forEach(l => { html += '<p>' + l + '</p>'; });
         html += '</div>';
-        if (s.ameen) html += '<div class="surah-ameen">' + (isHinglish ? '(Aameen)' : '(????)') + '</div>';
+        if (s.ameen) html += '<div class="surah-ameen">' + (isHinglish ? '(Aameen)' : '(आमीन)') + '</div>';
         html += '</div>';
         return html;
       }).join("");

@@ -12,6 +12,10 @@ RewriteRule ^ /%1 [L,R=301]
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^([^/]+)/?$ $1.html [L]
 
+# Force UTF-8 encoding
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .js .css
+
 # Allow Service Worker from subfolder to control root scope
 <Files "sw.js">
     Header set Service-Worker-Allowed "/"

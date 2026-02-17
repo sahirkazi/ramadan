@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hi">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>????? ?? ???? ?? ??????? ?? ??? | ?????? 2026</title>
+  <title>रोज़े की नियत और इफ़्तार की दुआ | रमज़ान 2026</title>
   <meta name="theme-color" content="#0F5132" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="?????? 2026" />
+  <meta name="apple-mobile-web-app-title" content="रमज़ान 2026" />
   <link rel="apple-touch-icon" href="pwa/pwa-192x192.png" />
   <link rel="icon" type="image/png" href="pwa/favicon.png" />
   <link rel="manifest" href="pwa/manifest.json" />
@@ -45,7 +45,6 @@
       color: #3b82f6;
     }
 
-    /* Blue for Taraweeh */
     .dua-text {
       font-size: 16px;
       font-weight: 600;
@@ -91,35 +90,35 @@
   <header class="glass">
     <div class="header-row">
       <div style="display:flex;align-items:center;gap:8px;">
-        <span>??</span>
-        <h1 class="text-gradient" style="font-size:1rem;font-weight:800;">?????? 2026</h1>
+        <span>🌙</span>
+        <h1 class="text-gradient" style="font-size:1rem;font-weight:800;">रमज़ान 2026</h1>
       </div>
       <div class="share-actions">
         <button class="share-btn install install-btn" onclick="installPWA()">📥 Install</button>
-        <button class="share-btn wa" onclick="shareOnWhatsApp()">?? WhatsApp</button>
-        <button class="share-btn" onclick="shareNative()">?? ????</button>
+        <button class="share-btn wa" onclick="shareOnWhatsApp()">📲 WhatsApp</button>
+        <button class="share-btn" onclick="shareNative()">🔗 शेयर</button>
       </div>
     </div>
   </header>
 
   <main>
     <div class="toggle-row">
-      <h3 class="section-title text-gradient" style="margin-bottom:0;">???</h3>
+      <h3 class="section-title text-gradient" style="margin-bottom:0;">दुआ</h3>
       <button class="lang-btn" id="langToggle" onclick="toggleLang()">Hinglish</button>
     </div>
 
     <div id="duaContainer"></div>
   </main>
 
-  <footer>?????? ?????? ??</footer>
+  <footer>रमज़ान मुबारक 🌙</footer>
 
   <nav class="bottom-nav glass">
     <div class="inner">
-      <a href="./" class="nav-link"><span class="nav-icon">??</span><span>???? ????</span></a>
-      <a href="dua" class="nav-link active"><span class="nav-icon">??</span><span>???</span></a>
-      <a href="surah" class="nav-link"><span class="nav-icon">??</span><span>????</span></a>
-      <a href="tasbih" class="nav-link"><span class="nav-icon">#</span><span>??????</span></a>
-      <a href="about" class="nav-link"><span class="nav-icon">??</span><span>????? ???? ???</span></a>
+      <a href="./" class="nav-link"><span class="nav-icon">🏠</span><span>टाइम टेबल</span></a>
+      <a href="dua" class="nav-link active"><span class="nav-icon">📖</span><span>दुआ</span></a>
+      <a href="surah" class="nav-link"><span class="nav-icon">📕</span><span>सूरह</span></a>
+      <a href="tasbih" class="nav-link"><span class="nav-icon">#</span><span>तस्बीह</span></a>
+      <a href="about" class="nav-link"><span class="nav-icon">ℹ️</span><span>हमारे बारे में</span></a>
     </div>
   </nav>
 
@@ -127,23 +126,23 @@
   <script>
     const duas = [
       {
-        tag: "sehri", tagNameHindi: "????? ?? ????", tagNameHinglish: "Roze Ki Niyat",
-        textHindi: "? ?? ???? ????? ????? ??? ???? ??????",
-        transHindi: "????? ?????? ?? ?? ?? ????? ?? ???? ???",
+        tag: "sehri", tagNameHindi: "रोज़े की नियत", tagNameHinglish: "Roze Ki Niyat",
+        textHindi: "व बि सोमि ग़दिन नवईतु मिन शहरि रमज़ान",
+        transHindi: "मैंने रमज़ान के कल के रोज़े की नियत की।",
         textHinglish: "Wa Bisawmi Ghadin Nawaitu Min Shahri Ramadan",
         transHinglish: "Maine Ramadan ke kal ke roze ki niyat ki."
       },
       {
-        tag: "iftar", tagNameHindi: "??????? ?? ???", tagNameHinglish: "Iftar Ki Dua",
-        textHindi: "??????????? ????? ?? ??????, ????? ??????, ?????? ????????, ???? ????????? ????????, ???????? ??????",
-        transHindi: "? ??????! ????? ???? ??? ????? ???, ??? ?? ???? ????, ??? ?? ????? ???? ?? ???? ??????? ?? ??????? ????, ??? ????? ??????",
+        tag: "iftar", tagNameHindi: "इफ़्तार की दुआ", tagNameHinglish: "Iftar Ki Dua",
+        textHindi: "अल्लाहुम्मा इन्नी लक सुम्तु, वबीका आमन्तु, वअलाइक तवक्कलतु, वअला रिज़्क़िक अफ़्तरतु, फ़तकब्बल मिन्नी",
+        transHindi: "ऐ अल्लाह! मैंने तेरे लिए रोज़ा रखा, तुझ पर ईमान लाया, तुझ पर भरोसा किया और तेरे रिज़्क़ से इफ़्तार किया, इसे क़बूल फ़रमा।",
         textHinglish: "Allahumma Inni Laka Sumtu, Wa Bika Aamantu, Wa 'Alaika Tawakkaltu, Wa 'Ala Rizqika Aftartu, Fa Taqabbal Minni",
         transHinglish: "Aye Allah! Maine tere liye roza rakha, tujh par eemaan laya, tujh par bharosa kiya aur tere rizq se iftar kiya, ise qubool farma."
       },
       {
-        tag: "taraweeh", tagNameHindi: "?????? ?? ???", tagNameHinglish: "Taraweeh Ki Dua",
-        textHindi: "???????? ??? ?????? ?? ?????\n???????? ??? ???????? ?? ???-??? ?? ????? ?? ?????? ?? ???????-? ?? ?????\n???????? ?????? ?????? ???? ?? ????? ? ?? ????\n????????? ????????? ??????? ? ?????? ????-??? ??-???\n??????????? ?????? ???? ???, ?? ?????? ?? ?????? ?? ??????",
-        transHindi: "??? ?? ?? (??????) ?? ????? ?? ??????? ???? ???\n??? ?? ?? ?? ???????, ?????, ????, ?????, ??????? ?? ????? ???? ???\n??? ?? ?? ?????? ?? ?????? ??, ???? ? ???? ??? ?? ? ????\n?? ???? ?? ??? ?? ???????? ??, ????? ?? ?? ????????? ?? ??? ?? ???\n? ??????! ???? ?? (??????) ?? ???, ? ???? ???? ????, ? ???? ???? ????, ? ???? ???? ?????",
+        tag: "taraweeh", tagNameHindi: "तरावीह की दुआ", tagNameHinglish: "Taraweeh Ki Dua",
+        textHindi: "सुब्हाना ज़िल मुल्कि वल मलकूत\nसुब्हाना ज़िल इज़्ज़ति वल अज़-मति वल हैबति वल कुदरति वल किबरिया-इ वल जबरूत\nसुब्हानल मलिकिल हय्यिल लज़ी ला यनामु व ला यमूत\nसुब्बुहुन कुद्दूसुन रब्बुना व रब्बुल मलाइ-कति वर-रूह\nअल्लाहुम्मा अजिरना मिनन नार, या मुजीरु या मुजीरु या मुजीरु",
+        transHindi: "पाक है वो (अल्लाह) जो मुल्क और बादशाहत वाला है।\nपाक है वो जो इज़्ज़त, बड़ाई, हैबत, कुदरत, बड़प्पन और दबदबे वाला है।\nपाक है वो बादशाह जो ज़िंदा है, जिसे न नींद आती है न मौत।\nवो बहुत ही पाक और मुक़द्दस है, हमारा रब और फ़रिश्तों और रूह का रब।\nऐ अल्लाह! हमें आग (जहन्नम) से बचा, ऐ पनाह देने वाले, ऐ पनाह देने वाले, ऐ पनाह देने वाले।",
         textHinglish: "Subhana Zil Mulki Wal Malakoot\nSubhana Zil Izzati Wal Azmati Wal Haibati Wal Qudrati Wal Kibriyaai Wal Jabaroot\nSubhanal Malikil Hayyil Lazee La Yanaamu Wa La Yamoot\nSubboohun Quddoosun Rabbuna Wa Rabbul Malaaikati War Rooh\nAllahumma Ajirna Minan Naar, Ya Mujeeru Ya Mujeeru Ya Mujeeru",
         transHinglish: "Paak hai wo (Allah) jo Mulk aur Badshahat wala hai.\nPaak hai wo jo Izzat, Badai, Haibat, Qudrat, Badappan aur Dabdabe wala hai.\nPaak hai wo Badshah jo Zinda hai, jise na neend aati hai na maut.\nWo bahut hi Paak aur Muqaddas hai, Hamara Rab aur Farishton aur Rooh ka Rab.\nAye Allah! Hamein aag (Jahannam) se bacha, Aye Panah dene wale, Aye Panah dene wale, Aye Panah dene wale."
       }
@@ -153,7 +152,7 @@
 
     function toggleLang() {
       isHinglish = !isHinglish;
-      document.getElementById("langToggle").textContent = isHinglish ? "?????" : "Hinglish";
+      document.getElementById("langToggle").textContent = isHinglish ? "हिंदी" : "Hinglish";
       renderDuas();
     }
 
@@ -165,14 +164,13 @@
         const trans = isHinglish ? d.transHinglish : d.transHindi;
 
         return `<div class="dua-card glass">
-      <div class="dua-header"><span>??</span><span class="dua-tag ${d.tag}">${tagName}</span></div>
+      <div class="dua-header"><span>📖</span><span class="dua-tag ${d.tag}">${tagName}</span></div>
       <p class="dua-text">${text}</p>
       <p class="dua-trans">"${trans}"</p>
     </div>`;
       }).join("");
     }
 
-    // Initial Render
     renderDuas();
   </script>
   <script>
