@@ -83,16 +83,44 @@ function shareNative() {
 
 // PWA Install Logic
 let deferredPrompt;
+
+// Check if it's iOS
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
 window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing on mobile
   e.preventDefault();
+  // Stash the event so it can be triggered later.
   deferredPrompt = e;
+  // Update UI notify the user they can install the PWA
   const installBtns = document.querySelectorAll('.install-btn');
-  installBtns.forEach(btn => btn.style.display = 'inline-flex');
+  installBtns.forEach(btn => {
+    btn.style.display = 'inline-flex';
+  });
+});
+
+// For browsers that don't support beforeinstallprompt but are PWA-ready (like iOS)
+window.addEventListener('load', () => {
+  if (isIOS) {
+    const installBtns = document.querySelectorAll('.install-btn');
+    installBtns.forEach(btn => btn.style.display = 'inline-flex');
+  }
 });
 
 async function installPWA() {
-  if (!deferredPrompt) return;
+  if (isIOS) {
+    alert("iPhone के लिए: नीचे दिए गए 'Share' बटन पर टैप करें और फिर 'Add to Home Screen' चुनें।");
+    return;
+  }
+
+  if (!deferredPrompt) {
+    alert("इंस्टॉल अभी तैयार नहीं है। कृपया कुछ सेकंड रुकें या सुनिश्चित करें कि आप सुरक्षित (HTTPS) कनेक्शन का उपयोग कर रहे हैं।");
+    return;
+  }
+
+  // Show the install prompt
   deferredPrompt.prompt();
+  // Wait for the user to respond to the prompt
   const { outcome } = await deferredPrompt.userChoice;
   if (outcome === 'accepted') {
     const installBtns = document.querySelectorAll('.install-btn');
@@ -100,3 +128,9 @@ async function installPWA() {
   }
   deferredPrompt = null;
 }
+
+window.addEventListener('appinstalled', (evt) => {
+  // Log install to analytics or hide button
+  const installBtns = document.querySelectorAll('.install-btn');
+  installBtns.forEach(btn => btn.style.display = 'none');
+});
