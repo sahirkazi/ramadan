@@ -1,16 +1,16 @@
 const CACHE_NAME = "ramadan-v4";
 const ASSETS = [
-  "./",
-  "dua",
-  "surah",
-  "tasbih",
-  "about",
-  "style.css",
-  "data.js",
-  "manifest.json",
-  "favicon.png",
-  "pwa-192x192.png",
-  "pwa-512x512.png"
+  "../",
+  "../dua",
+  "../surah",
+  "../tasbih",
+  "../about",
+  "../style.css",
+  "../data.js",
+  "./manifest.json",
+  "./favicon.png",
+  "./pwa-192x192.png",
+  "./pwa-512x512.png"
 ];
 
 self.addEventListener("install", (e) => {

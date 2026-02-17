@@ -5,6 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>तस्बीह काउंटर | रमज़ान 2026</title>
+  <meta name="theme-color" content="#0F5132" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="तस्बीह काउंटर" />
+  <link rel="apple-touch-icon" href="pwa/pwa-192x192.png" />
+  <link rel="icon" type="image/png" href="pwa/favicon.png" />
+  <link rel="manifest" href="pwa/manifest.json" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -63,6 +70,11 @@
       countEl.textContent = 0;
       localStorage.setItem("tasbih-count", 0);
     });
+  </script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("pwa/sw.js", { scope: "/" });
+    }
   </script>
 </body>
 
