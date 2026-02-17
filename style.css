@@ -72,6 +72,8 @@ header h1 { font-size: 1.1rem; font-weight: 800; }
 .share-btn:hover { background: hsla(152, 69%, 24%, 0.35); }
 .share-btn.wa { background: hsla(120, 60%, 35%, 0.2); color: hsl(120, 60%, 45%); }
 .share-btn.wa:hover { background: hsla(120, 60%, 35%, 0.35); }
+.share-btn.install { background: hsla(42, 70%, 52%, 0.2); color: var(--accent); display: none; }
+.share-btn.install:hover { background: hsla(42, 70%, 52%, 0.35); }
 .share-actions { display: flex; gap: 8px; }
 
 /* Main */
