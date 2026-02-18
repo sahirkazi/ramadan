@@ -26,13 +26,26 @@ include 'header.php';
 <?php include 'footer.php'; ?>
 <script src="data.js"></script>
 <script>
+    function getHeroIndex() {
+        const idx = getTodayIndex();
+        if (idx === -1 && ramadanData.length > 0) {
+            const now = new Date();
+            now.setHours(0, 0, 0, 0);
+            const first = parseDate(ramadanData[0].englishDate);
+            if (now < first) return 0;
+        }
+        return idx;
+    }
+
     function renderTable() {
         const tbody = document.getElementById("roza-tbody");
-        const now = new Date(); now.setHours(0, 0, 0, 0);
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
         const todayIdx = getTodayIndex();
         let html = "";
         ramadanData.forEach((r, i) => {
-            const rd = parseDate(r.englishDate); rd.setHours(0, 0, 0, 0);
+            const rd = parseDate(r.englishDate);
+            rd.setHours(0, 0, 0, 0);
             const isToday = i === todayIdx;
             const isPast = rd < now;
             let cls = isPast ? "past" : (i % 2 === 0 ? "odd" : "even");
@@ -47,18 +60,25 @@ include 'header.php';
         });
         tbody.innerHTML = html;
         const todayRow = document.getElementById("today-row");
-        if (todayRow) setTimeout(() => todayRow.scrollIntoView({ behavior: "smooth", block: "center" }), 300);
+        if (todayRow) setTimeout(() => todayRow.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        }), 300);
     }
 
     function renderHero() {
         const el = document.getElementById("hero-card");
-        const idx = getTodayIndex();
+        const idx = getHeroIndex();
         if (idx === -1) {
             el.innerHTML = '<div class="pre-ramadan glass-hero" id="pre-hero"></div>';
             return;
         }
         const r = ramadanData[idx];
-        const todayStr = new Date().toLocaleDateString("hi-IN");
+        const todayStr = new Intl.DateTimeFormat('hi-IN-u-ca-islamic-nu-latn', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        }).format(new Date());
         el.innerHTML = `
     <div class="hero-card glass-hero">
       <div style="text-align:center"><span class="badge">आज का रोज़ा</span></div>
@@ -86,44 +106,37 @@ include 'header.php';
 
     function tickCountdown() {
         const now = new Date();
-        const idx = getTodayIndex();
+        const idx = getHeroIndex();
         if (idx === -1) {
             const preEl = document.getElementById("pre-hero");
             if (!preEl) return;
             const first = ramadanData[0];
             const target = timeToDate(first.englishDate, first.sehriTime);
-            const diff = target.getTime() - now.getTime();
-            if (diff > 0) {
-                const ts = Math.floor(diff / 1000);
-                const days = Math.floor(ts / 86400), rem = ts % 86400;
-                const hrs = Math.floor(rem / 3600), mins = Math.floor((rem % 3600) / 60), secs = rem % 60;
-                preEl.innerHTML = `<div class="label text-gradient">रमज़ान शुरू होने में</div>
-        <div class="countdown-units">
-          <div class="cd-unit glass"><div class="num">${pad(days)}</div><div class="lbl">दिन</div></div>
-          <div class="cd-unit glass"><div class="num">${pad(hrs)}</div><div class="lbl">घंटे</div></div>
-          <div class="cd-unit glass"><div class="num">${pad(mins)}</div><div class="lbl">मिनट</div></div>
-          <div class="cd-unit glass"><div class="num">${pad(secs)}</div><div class="lbl">सेकंड</div></div>
-        </div>`;
-            } else {
-                preEl.innerHTML = `<p style="color:var(--muted-fg)">रमज़ान का समय नहीं है</p>`;
-                // Show Eid Mubarak + next Ramadan countdown
-                const firstDate = parseDate(ramadanData[0].englishDate);
-                const nextRamadan = new Date(firstDate.getTime());
-                nextRamadan.setFullYear(nextRamadan.getFullYear() + 1);
-                const nDiff = nextRamadan.getTime() - now.getTime();
-                let eidHtml = `<div style="font-size:2.5rem">🎉</div><div class="roza-number text-gradient">ईद मुबारक!</div><p style="color:var(--muted-fg);font-size:0.85rem">अल्लाह आप के रोज़े और इबादात क़बूल फ़रमाए</p>`;
-                if (nDiff > 0) {
-                    const nTs = Math.floor(nDiff / 1000), nD = Math.floor(nTs / 86400), nR = nTs % 86400;
-                    eidHtml += `<div style="margin-top:12px"><div class="label" style="color:var(--primary);font-weight:600;font-size:0.85rem">अगले रमज़ान में</div>
+            // Since getHeroIndex returns 0 if we are before Ramadan, 
+            // idx only hits -1 here if we are AFTER Ramadan (or empty logic).
+            // Thus diff will technically be negative.
+
+            // Only Eid logic remains reachable effectively
+            preEl.innerHTML = `<p style="color:var(--muted-fg)">रमज़ान का समय नहीं है</p>`;
+            // Show Eid Mubarak + next Ramadan countdown
+            const firstDate = parseDate(ramadanData[0].englishDate);
+            const nextRamadan = new Date(firstDate.getTime());
+            nextRamadan.setFullYear(nextRamadan.getFullYear() + 1);
+            const nDiff = nextRamadan.getTime() - now.getTime();
+            let eidHtml = `<div style="font-size:2.5rem">🎉</div><div class="roza-number text-gradient">ईद मुबारक!</div><p style="color:var(--muted-fg);font-size:0.85rem">अल्लाह आप के रोज़े और इबादात क़बूल फ़रमाए</p>`;
+            if (nDiff > 0) {
+                const nTs = Math.floor(nDiff / 1000),
+                    nD = Math.floor(nTs / 86400),
+                    nR = nTs % 86400;
+                eidHtml += `<div style="margin-top:12px"><div class="label" style="color:var(--primary);font-weight:600;font-size:0.85rem">अगले रमज़ान में</div>
           <div class="countdown-units" style="margin-top:8px">
             <div class="cd-unit glass"><div class="num">${pad(nD)}</div><div class="lbl">दिन</div></div>
             <div class="cd-unit glass"><div class="num">${pad(Math.floor(nR / 3600))}</div><div class="lbl">घंटे</div></div>
             <div class="cd-unit glass"><div class="num">${pad(Math.floor((nR % 3600) / 60))}</div><div class="lbl">मिनट</div></div>
             <div class="cd-unit glass"><div class="num">${pad(nR % 60)}</div><div class="lbl">सेकंड</div></div>
           </div></div>`;
-                }
-                preEl.innerHTML = eidHtml;
             }
+            preEl.innerHTML = eidHtml;
             return;
         }
         const r = ramadanData[idx];
@@ -132,13 +145,13 @@ include 'header.php';
         const sEl = document.getElementById("sehri-cd");
         const iEl = document.getElementById("iftar-cd");
         if (!sEl || !iEl) return;
-        sEl.innerHTML = sehri.passed
-            ? '<p class="passed-msg">सहरी का समय समाप्त हो चुका है</p>'
-            : `<div class="countdown-units"><div class="cd-unit glass"><div class="num">${pad(sehri.h)}</div><div class="lbl">घंटे</div></div><div class="cd-unit glass"><div class="num">${pad(sehri.m)}</div><div class="lbl">मिनट</div></div><div class="cd-unit glass"><div class="num">${pad(sehri.s)}</div><div class="lbl">सेकंड</div></div></div>`;
+        sEl.innerHTML = sehri.passed ?
+            '<p class="passed-msg">सहरी का समय समाप्त हो चुका है</p>' :
+            `<div class="countdown-units"><div class="cd-unit glass"><div class="num">${pad(sehri.h)}</div><div class="lbl">घंटे</div></div><div class="cd-unit glass"><div class="num">${pad(sehri.m)}</div><div class="lbl">मिनट</div></div><div class="cd-unit glass"><div class="num">${pad(sehri.s)}</div><div class="lbl">सेकंड</div></div></div>`;
         const iftarMsg = sehri.passed && iftar.passed ? "आज का रोज़ा पूरा हो चुका है" : "इफ़्तार का समय समाप्त हो चुका है";
-        iEl.innerHTML = iftar.passed
-            ? `<p class="passed-msg">${iftarMsg}</p>`
-            : `<div class="countdown-units"><div class="cd-unit glass"><div class="num">${pad(iftar.h)}</div><div class="lbl">घंटे</div></div><div class="cd-unit glass"><div class="num">${pad(iftar.m)}</div><div class="lbl">मिनट</div></div><div class="cd-unit glass"><div class="num">${pad(iftar.s)}</div><div class="lbl">सेकंड</div></div></div>`;
+        iEl.innerHTML = iftar.passed ?
+            `<p class="passed-msg">${iftarMsg}</p>` :
+            `<div class="countdown-units"><div class="cd-unit glass"><div class="num">${pad(iftar.h)}</div><div class="lbl">घंटे</div></div><div class="cd-unit glass"><div class="num">${pad(iftar.m)}</div><div class="lbl">मिनट</div></div><div class="cd-unit glass"><div class="num">${pad(iftar.s)}</div><div class="lbl">सेकंड</div></div></div>`;
     }
 
     renderTable();
