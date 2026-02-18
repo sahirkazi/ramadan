@@ -74,11 +74,12 @@ include 'header.php';
             return;
         }
         const r = ramadanData[idx];
-        const todayStr = new Intl.DateTimeFormat('hi-IN-u-ca-islamic-nu-latn', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric'
-        }).format(new Date());
+        const rozaNum = r.rozaNumber;
+        let ashraName = "";
+        if (rozaNum <= 10) ashraName = "पहला अशरा (रहमत)";
+        else if (rozaNum <= 20) ashraName = "दूसरा अशरा (मग़फ़िरत)";
+        else ashraName = "तीसरा अशरा (निजात)";
+
         el.innerHTML = `
     <div class="hero-card glass-hero">
       <div style="text-align:center"><span class="badge">आज का रोज़ा</span></div>
@@ -87,7 +88,7 @@ include 'header.php';
         <div class="info-item glass"><div><div class="label">उर्दू तारीख</div><div class="value">${r.urduDate}</div></div></div>
         <div class="info-item glass"><div><div class="label">अंग्रेजी तारीख</div><div class="value">${r.englishDate}</div></div></div>
         <div class="info-item glass"><div><div class="label">आज का दिन</div><div class="value">${r.day}</div></div></div>
-        <div class="info-item glass"><div><div class="label">आज की तारीख</div><div class="value">${todayStr}</div></div></div>
+        <div class="info-item glass"><div><div class="label">अशरा</div><div class="value" style="color:var(--primary);font-weight:700;">${ashraName}</div></div></div>
       </div>
       <div class="time-grid">
         <div class="time-card glass"><div>🌙</div><div class="time-label">सहरी</div><div class="time-value">${r.sehriTime}</div></div>
