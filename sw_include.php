@@ -1,8 +1,8 @@
 <script>
     if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-            navigator.serviceWorker.register("pwa/sw.js", { scope: "./" }).then(reg => {
-                console.log("SW registered: ", reg);
+            navigator.serviceWorker.register("sw.js", { scope: "./" }).then(reg => {
+                console.log("SW registered from root: ", reg);
                 reg.addEventListener("updatefound", () => {
                     const newWorker = reg.installing;
                     newWorker.addEventListener("statechange", () => {
@@ -12,7 +12,10 @@
                         }
                     });
                 });
-            }).catch(err => console.log("SW registration failed: ", err));
+            }).catch(err => {
+                console.log("SW registration failed: ", err);
+                alert("PWA Registration Failed: " + err); // Temporary alert for debugging on mobile
+            });
         });
     }
 </script>

@@ -1,16 +1,16 @@
-const CACHE_NAME = "ramadan-v6-php";
+const CACHE_NAME = "ramadan-v8-root";
 const ASSETS = [
-  "../",
-  "../dua",
-  "../surah",
-  "../tasbih",
-  "../about",
-  "../style.css?v=1",
-  "../data.js",
-  "./manifest.json",
-  "./favicon.png",
-  "./pwa-192x192.png",
-  "./pwa-512x512.png"
+  "./",
+  "dua",
+  "surah",
+  "tasbih",
+  "about",
+  "style.css?v=1",
+  "data.js",
+  "pwa/manifest.json",
+  "pwa/favicon.png",
+  "pwa/pwa-192x192.png",
+  "pwa/pwa-512x512.png"
 ];
 
 self.addEventListener("install", (e) => {
