@@ -1,0 +1,138 @@
+<?php
+$page = 'about';
+$pageTitle = 'हमारे बारे में | रमज़ान 2026';
+$pageDesc = 'रमज़ान टाइम टेबल ऐप के बारे में — डेवलपर और Masjid Connect की मालूमात';
+$extraHead = '<style>
+    .about-profile {
+      text-align: center;
+      border-radius: 1rem;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .about-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: hsla(152, 69%, 24%, 0.2);
+      border: 2px solid hsla(152, 69%, 24%, 0.4);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      box-shadow: 0 4px 20px hsla(152, 50%, 12%, 0.3);
+    }
+
+    .about-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-top: 12px;
+    }
+
+    .about-role {
+      font-size: 0.85rem;
+      color: var(--muted-fg);
+      font-weight: 500;
+    }
+
+    .about-section {
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+
+    .about-section h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .about-section h3.accent-title {
+      color: var(--accent);
+    }
+
+    .about-section p {
+      font-size: 0.85rem;
+      color: hsla(140, 15%, 93%, 0.85);
+      line-height: 1.7;
+    }
+
+    .about-website {
+      text-align: center;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+
+    .about-website a {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .about-website a:hover {
+      text-decoration: underline;
+    }
+
+    .about-website .sub {
+      font-size: 0.75rem;
+      color: var(--muted-fg);
+      margin-top: 6px;
+    }
+  </style>';
+include 'header.php';
+?>
+
+<main>
+    <!-- Profile Card -->
+    <div class="about-profile glass-hero">
+        <img src="profile-pic.webp" alt="Sahir Kazi"
+            style="width:96px;height:96px;border-radius:50%;object-fit:cover;border:2px solid hsla(152, 69%, 24%, 0.4);box-shadow:0 4px 20px hsla(152, 50%, 12%, 0.3);" />
+        <div class="about-name text-gradient">Sahir Kazi</div>
+        <div class="about-role">Website Developer</div>
+    </div>
+
+    <!-- Developer Section -->
+    <div class="about-section glass">
+        <h3>👤 डेवलपर के बारे में</h3>
+        <p>साहिर काज़ी ने इस रमज़ान टाइम टेबल एप्लीकेशन को डिज़ाइन और डेवलप किया है ताके मुस्लिम भाइयों को सहरी और
+            इफ़्तार
+            के औक़ात मालूम हो सकें। यह एप्लीकेशन ऑफ़लाइन भी काम करती है और सिंपल और साफ़ डिज़ाइन पर मबनी है।</p>
+    </div>
+
+    <!-- Masjid Connect Section -->
+    <div class="about-section glass">
+        <h3 class="accent-title">🕌 Masjid Connect – मुस्तक़बिल की योजना</h3>
+        <p>masjid-connect.in एक डिजिटल प्लेटफॉर्म है जिसका मक़सद मुख़्तलिफ़ इलाक़ों की मस्जिद को एक जगह जोड़ना है। आने
+            वाले वक़्त में यहाँ लोकल मस्जिद की मालूमात और नमाज़ के औक़ात शामिल किए जाएँगे ताके हर मुस्लिम वक़्त पर जमाअत
+            के
+            साथ नमाज़ अदा कर सके।</p>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="about-section glass">
+        <h3>💚 हमारा मक़सद</h3>
+        <p>हमारा मक़सद यह है के हर मुस्लिम अपनी लोकल मस्जिद से कनेक्टेड रहे और हर नमाज़ वक़्त पर जमाअत के साथ अदा करे।
+            सिंपल डिजिटल टूल्स के ज़रिये इबादत को आसान बनाना हमारी कोशिश है।</p>
+    </div>
+
+    <!-- Website Section -->
+    <div class="about-website glass">
+        <h3
+            style="color:var(--primary);font-weight:700;font-size:0.95rem;justify-content:center;display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            🌐 आधिकारिक वेबसाइट</h3>
+        <a href="https://masjid-connect.in" target="_blank" rel="noopener noreferrer">masjid-connect.in</a>
+        <p class="sub">यह प्लेटफॉर्म मुस्तक़बिल में तमाम लोकल मस्जिद को जोड़ने की कोशिश करेगा।</p>
+    </div>
+</main>
+
+<?php include 'footer.php'; ?>
+<script src="data.js"></script>
+<?php include 'sw_include.php'; ?>
+</body>
+
+</html>

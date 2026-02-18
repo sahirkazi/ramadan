@@ -1,4 +1,4 @@
-const CACHE_NAME = "ramadan-v5";
+const CACHE_NAME = "ramadan-v6-php";
 const ASSETS = [
   "../",
   "../dua",

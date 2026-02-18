@@ -4,17 +4,17 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Remove .html extension from URL
-RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+# Remove .php extension from URL
+RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
 RewriteRule ^ /%1 [L,R=301]
 
-# Internally rewrite clean URLs to .html files
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^/]+)/?$ $1.html [L]
+# Internally rewrite clean URLs to .php files
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
 
 # Force UTF-8 encoding
 AddDefaultCharset UTF-8
-AddCharset UTF-8 .html .js .css
+AddCharset UTF-8 .php .html .js .css
 
 # Allow Service Worker from subfolder to control root scope
 <Files "sw.js">
