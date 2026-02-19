@@ -563,12 +563,14 @@ footer {
 
 /* Refresh Button */
 .refresh-btn {
-  background: hsla(152, 69%, 24%, 0.2);
-  border: 1px solid hsla(152, 69%, 24%, 0.3);
-  color: var(--primary);
-  padding: 8px 16px;
+  background: hsla(152, 69%, 24%, 0.3);
+  border: 1px solid hsla(152, 69%, 24%, 0.4);
+  color: var(--fg);
+  /* Fixed contrast */
+  padding: 10px 20px;
+  /* Larger touch target */
   border-radius: 9999px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
@@ -578,13 +580,15 @@ footer {
   transition: all 0.2s ease;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.1);
 }
 
 .refresh-btn:hover {
-  background: hsla(152, 69%, 24%, 0.35);
+  background: hsla(152, 69%, 24%, 0.5);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px hsla(152, 69%, 24%, 0.2);
+  box-shadow: 0 6px 16px hsla(152, 69%, 24%, 0.25);
+  color: var(--primary-fg);
 }
 
 .refresh-btn:active {

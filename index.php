@@ -27,12 +27,32 @@ include 'header.php';
 <script src="data.js"></script>
 <script>
     function getHeroIndex() {
-        const idx = getTodayIndex();
-        if (idx === -1 && ramadanData.length > 0) {
-            const now = new Date();
-            now.setHours(0, 0, 0, 0);
+        let idx = getTodayIndex();
+        const now = new Date();
+
+        // If today is a Roza day
+        if (idx !== -1) {
+            const r = ramadanData[idx];
+            // Check if Iftar has passed for today
+            const iftarDate = timeToDate(r.englishDate, r.iftarTime);
+            
+            if (now > iftarDate) {
+                // Return next day if available
+                if (idx + 1 < ramadanData.length) {
+                    return idx + 1;
+                }
+                // If it was the last day and Iftar passed, return -1 to trigger Eid/End logic
+                return -1;
+            }
+            return idx;
+        }
+
+        // Fallback for pre-Ramadan
+        if (ramadanData.length > 0) {
+            const todayMidnight = new Date();
+            todayMidnight.setHours(0, 0, 0, 0);
             const first = parseDate(ramadanData[0].englishDate);
-            if (now < first) return 0;
+            if (todayMidnight < first) return 0;
         }
         return idx;
     }
