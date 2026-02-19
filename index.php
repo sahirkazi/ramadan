@@ -94,6 +94,11 @@ include 'header.php';
         <div class="time-card glass"><div>🌙</div><div class="time-label">सहरी</div><div class="time-value">${r.sehriTime}</div></div>
         <div class="time-card glass"><div>☀️</div><div class="time-label">इफ़्तार</div><div class="time-value">${r.iftarTime}</div></div>
       </div>
+      <div style="text-align:center; margin-bottom: 12px;">
+        <button class="refresh-btn glass" onclick="window.location.reload()">
+          <span class="refresh-icon">↻</span> अपडेट करें
+        </button>
+      </div>
       <div class="countdown-box glass">
         <div class="countdown-label sehri">🌙 सहरी काउंटडाउन</div>
         <div id="sehri-cd"></div>

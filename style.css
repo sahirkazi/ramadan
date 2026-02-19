@@ -560,3 +560,54 @@ footer {
     font-size: 1.5rem;
   }
 }
+
+/* Refresh Button */
+.refresh-btn {
+  background: hsla(152, 69%, 24%, 0.2);
+  border: 1px solid hsla(152, 69%, 24%, 0.3);
+  color: var(--primary);
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  margin-bottom: 12px;
+}
+
+.refresh-btn:hover {
+  background: hsla(152, 69%, 24%, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px hsla(152, 69%, 24%, 0.2);
+}
+
+.refresh-btn:active {
+  transform: translateY(0);
+}
+
+.refresh-icon {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.refresh-btn:hover .refresh-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
