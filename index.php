@@ -35,8 +35,9 @@ include 'header.php';
             const r = ramadanData[idx];
             // Check if Iftar has passed for today
             const iftarDate = timeToDate(r.englishDate, r.iftarTime);
+            const oneHourAfterIftar = new Date(iftarDate.getTime() + 60 * 60 * 1000);
             
-            if (now > iftarDate) {
+            if (now > oneHourAfterIftar) {
                 // Return next day if available
                 if (idx + 1 < ramadanData.length) {
                     return idx + 1;
@@ -130,9 +131,17 @@ include 'header.php';
     </div>`;
     }
 
+    let lastRenderedIdx = -2;
+
     function tickCountdown() {
         const now = new Date();
         const idx = getHeroIndex();
+        
+        if (idx !== lastRenderedIdx) {
+            lastRenderedIdx = idx;
+            renderHero();
+        }
+
         if (idx === -1) {
             const preEl = document.getElementById("pre-hero");
             if (!preEl) return;
@@ -181,7 +190,6 @@ include 'header.php';
     }
 
     renderTable();
-    renderHero();
     tickCountdown();
     setInterval(tickCountdown, 1000);
 </script>
